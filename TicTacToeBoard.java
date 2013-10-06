@@ -21,4 +21,34 @@ public class TicTacToeBoard {
                                              " 4 | 5 | 6 \n" +
                                              "-----------\n" + 
                                              " 7 | 8 | 9 \n";
+
+  /* The number of cells per row/col */
+  private static final int N = 3;
+
+  /* Conversion from 1-9 representation to two dimensional array indices */
+  private static final int[] ROW = {0, 0, 0, 1, 1, 1, 2, 2, 2};
+  private static final int[] COL = {0, 1, 2, 0, 1, 2, 0, 1, 2};
+
+  private TicTacToeCell[][] board;
+
+  /**
+   * Initialize the board to all unplayed cells.
+   */
+  public TicTacToeBoard() {
+    board = new TicTacToeCell[N][N];
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+        board[i][j] = new TicTacToeCell();
+      }
+    }
+  }
+
+  /**
+   * Play a move, it it is legal.
+   * @returns true if the move was successfully played.
+   */
+  public boolean playMove(int move, TicTacToeGame.Player player) {
+    move -= 1; // for 0-indexing
+    return board[ROW[move]][COL[move]].play(player);
+  }
 }

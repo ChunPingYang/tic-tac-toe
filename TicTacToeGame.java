@@ -4,6 +4,10 @@ import java.util.Scanner;
  * Driver for playing a game of Tic Tac Toe
  */
 public class TicTacToeGame {
+  public static enum Player {
+    X, O
+  }
+
   private static final String WELCOME_MESSAGE = "\nWelcome to Tic Tac Toe!\n";
   private static final String MOVE_INSTRUCTION_MESSAGE = "The game board looks"
       + " like this:\n\n" + TicTacToeBoard.LABELED_BOARD + "\nOn your turn, "
@@ -60,12 +64,25 @@ public class TicTacToeGame {
   }
 
   /**
+   * Play a round of Tic Tac Toe with the user. A round consists of a move
+   * by the user and one by the computer.
+   * @param board the board to play on.
+   * @return true if the game has ended.
+   */
+  private static boolean play(TicTacToeBoard board) {
+    int move = getMove();
+    board.playMove(move, Player.X);
+    return true;
+  }
+
+  /**
    * Plays a game of Tic Tac Toe on the command line with a randomized
    * computer opponent.
    */
   public static void main(String[] args) {
+    TicTacToeBoard board = new TicTacToeBoard();
     say(WELCOME_MESSAGE);
     say(MOVE_INSTRUCTION_MESSAGE);
-    int move = getMove();
+    play(board);
   }
 }
