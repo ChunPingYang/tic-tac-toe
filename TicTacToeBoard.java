@@ -93,7 +93,8 @@ public class TicTacToeBoard {
 
   /**
    * Determine who won the game.
-   * @return the winner of the game.
+   * @return the winner of the game. Returns TicTacToeGame.Player.Nobody
+   *     if the game is not over.
    */
   public TicTacToeGame.Player whoWon() {
     TicTacToeGame.Player winner = winnerOfDownDiagonal();
