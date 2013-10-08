@@ -124,7 +124,7 @@ public class TicTacToeGame {
     TicTacToeBoard board = new TicTacToeBoard();
     say(WELCOME_MESSAGE);
     say(MOVE_INSTRUCTION_MESSAGE);
-    while(!play(board));
+    while(!play(board)); // Will loop until the board game is over.
     if (board.whoWon() == Player.X) {
       say(YOU_WON);
     } else if (board.whoWon() == Player.O) {
