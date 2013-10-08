@@ -53,9 +53,9 @@ public class TicTacToeGame {
    * Prompt the user for a move, and return it.
    * @return a valid move entered by the user.
    */
-  private static int getMove() {
+  private static int getMove(board) {
     prompt(MOVE_PROMPT);
-    return getValidMove();
+    return getValidMove(board);
   }
 
   /**
@@ -63,7 +63,7 @@ public class TicTacToeGame {
    * user again.
    * @return the valid move the user made.
    */
-  private static int getValidMove() {
+  private static int getValidMove(board) {
     String playerInput = scanner.nextLine();
     try {
       int move = Integer.parseInt(playerInput);
@@ -103,7 +103,7 @@ public class TicTacToeGame {
    * @return true if the game has ended.
    */
   private static boolean play(TicTacToeBoard board) {
-    int move = getMove();
+    int move = getMove(board);
     board.playMove(move, Player.X);
     System.out.println();
     System.out.println(board);
