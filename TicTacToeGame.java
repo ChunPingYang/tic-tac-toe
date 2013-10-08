@@ -85,7 +85,7 @@ public class TicTacToeGame {
     } catch (NumberFormatException e) {
       prompt(VALID_MOVE_PROMPT);
     } finally {
-      return getValidMove();
+      return getValidMove(board);
     }
   }
 
