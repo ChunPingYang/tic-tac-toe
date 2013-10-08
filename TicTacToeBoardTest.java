@@ -28,10 +28,7 @@ public class TicTacToeBoardTest {
                          "-----------\n" +
                          "   |   |   \n";
     
-    assertTrue(playedBoard.isDone());
-    assertEquals(TicTacToeGame.Player.X, playedBoard.whoWon());
-    assertArrayEquals(possibleMoves, playedBoard.getPossibleMoves());
-    assertEquals(boardString, playedBoard.toString());
+    assertCorrect(true, TicTacToeGame.Player.X, possibleMoves, boardString);
   }
 
   @Test
@@ -44,10 +41,7 @@ public class TicTacToeBoardTest {
                          "-----------\n" +
                          "   | O |   \n";
 
-    assertTrue(playedBoard.isDone());
-    assertEquals(TicTacToeGame.Player.O, playedBoard.whoWon());
-    assertArrayEquals(possibleMoves, playedBoard.getPossibleMoves());
-    assertEquals(boardString, playedBoard.toString());
+    assertCorrect(true, TicTacToeGame.Player.O, possibleMoves, boardString);
   }
 
   @Test
@@ -60,10 +54,7 @@ public class TicTacToeBoardTest {
                          "-----------\n" +
                          "   |   | O \n";
 
-    assertTrue(playedBoard.isDone());
-    assertEquals(TicTacToeGame.Player.O, playedBoard.whoWon());
-    assertArrayEquals(possibleMoves, playedBoard.getPossibleMoves());
-    assertEquals(boardString, playedBoard.toString());
+    assertCorrect(true, TicTacToeGame.Player.O, possibleMoves, boardString);
   }
 
   @Test
@@ -76,10 +67,7 @@ public class TicTacToeBoardTest {
                          "-----------\n" +
                          " X |   |   \n";
 
-    assertTrue(playedBoard.isDone());
-    assertEquals(TicTacToeGame.Player.X, playedBoard.whoWon());
-    assertArrayEquals(possibleMoves, playedBoard.getPossibleMoves());
-    assertEquals(boardString, playedBoard.toString());
+    assertCorrect(true, TicTacToeGame.Player.X, possibleMoves, boardString);
   }
 
   @Test
@@ -93,10 +81,7 @@ public class TicTacToeBoardTest {
                          "-----------\n" +
                          " O | X | X \n";
 
-    assertTrue(playedBoard.isDone());
-    assertEquals(TicTacToeGame.Player.Nobody, playedBoard.whoWon());
-    assertArrayEquals(possibleMoves, playedBoard.getPossibleMoves());
-    assertEquals(boardString, playedBoard.toString());
+    assertCorrect(true, TicTacToeGame.Player.Nobody, possibleMoves, boardString);
   }
 
   @Test
@@ -108,10 +93,7 @@ public class TicTacToeBoardTest {
             "-----------\n" +
             "   |   |   \n";
 
-    assertFalse(playedBoard.isDone());
-    assertEquals(TicTacToeGame.Player.Nobody, playedBoard.whoWon());
-    assertArrayEquals(possibleMoves, playedBoard.getPossibleMoves());
-    assertEquals(boardString, playedBoard.toString());
+    assertCorrect(false, TicTacToeGame.Player.Nobody, possibleMoves, boardString);
   }
 
   @Test
@@ -125,10 +107,7 @@ public class TicTacToeBoardTest {
                          "-----------\n" +
                          "   |   | X \n";
 
-    assertFalse(playedBoard.isDone());
-    assertEquals(TicTacToeGame.Player.Nobody, playedBoard.whoWon());
-    assertArrayEquals(possibleMoves, playedBoard.getPossibleMoves());
-    assertEquals(boardString, playedBoard.toString());
+    assertCorrect(false, TicTacToeGame.Player.Nobody, possibleMoves, boardString);
   }
 
   /**
@@ -140,5 +119,17 @@ public class TicTacToeBoardTest {
     for (int move: moves) {
       playedBoard.playMove(move, player);
     }
+  }
+
+  /**
+   * Assert that the isDone, whoWon, getPossibleMoves, and toString
+   *     methods are behaving as expected.
+   */
+  private void assertCorrect(boolean done, TicTacToeGame.Player winner,
+         int[] movesLeft, String stringRep) {
+    assertEquals(done, playedBoard.isDone());
+    assertEquals(winner, playedBoard.whoWon());
+    assertArrayEquals(movesLeft, playedBoard.getPossibleMoves());
+    assertEquals(stringRep), playedBoard.toString());
   }
 }
