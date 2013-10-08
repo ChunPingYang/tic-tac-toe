@@ -71,11 +71,11 @@ public class TicTacToeBoard {
   public boolean playMove(int move, TicTacToeGame.Player player) {
     // subtract 1 for 0-indexing
     if (board[ROW[move - 1]][COL[move - 1]].play(player)) {
-      // Move must be an integer so it knows to remove by value, not index
+      // Move must be an Integer so it knows to remove by value, not index.
       possibleMoves.remove(new Integer(move));
       return true;
     }
-    return false;
+    return false; // The move was unsuccessful.
   }
 
   /**
