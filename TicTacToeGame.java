@@ -51,9 +51,10 @@ public class TicTacToeGame {
 
   /**
    * Prompt the user for a move, and return it.
+   * @param board the board the game is being played on.
    * @return a valid move entered by the user.
    */
-  private static int getMove(board) {
+  private static int getMove(TicTacToeBoard board) {
     prompt(MOVE_PROMPT);
     return getValidMove(board);
   }
@@ -61,9 +62,10 @@ public class TicTacToeGame {
   /**
    * Get a move from the user. If it is invalid, display an error and prompt the
    * user again.
+   * @param board the board the game is being played on.
    * @return the valid move the user made.
    */
-  private static int getValidMove(board) {
+  private static int getValidMove(TicTacToeBoard board) {
     String playerInput = scanner.nextLine();
     try {
       int move = Integer.parseInt(playerInput);
