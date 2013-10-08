@@ -48,7 +48,7 @@ public class TicTacToeBoard {
       }
     }
     possibleMoves = new ArrayList<Integer>();
-    for (int i = 1; i <= 9; i++) {
+    for (int i = MIN_MOVE; i <= MAX_MOVE; i++) {
       possibleMoves.add(i);
     }
   }
