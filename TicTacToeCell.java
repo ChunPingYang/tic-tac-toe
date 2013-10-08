@@ -3,21 +3,13 @@
  */
 public class TicTacToeCell{
 
-  /**
-   * Possible states for the cell: either it hasn't been played yet, or it has
-   * been claimed by X or O.
-   */
-  private static enum CellState {
-    NOT_PLAYED, X, O
-  }
-
-  private CellState state;
+  private TicTacToeGame.Player playedBy;
 
   /**
    * Initialize a cell that has not been played yet.
    */
   public TicTacToeCell() {
-    this.state = CellState.NOT_PLAYED;
+    this.playedBy = TicTacToeGame.Player.Nobody;
   }
 
   /**
@@ -25,7 +17,7 @@ public class TicTacToeCell{
    * @return if this cell has already been played.
    */
   private boolean canPlay() {
-    return this.state == CellState.NOT_PLAYED;
+    return playedBy == TicTacToeGame.Player.Nobody;
   }
 
   /**
@@ -38,13 +30,39 @@ public class TicTacToeCell{
     if (!canPlay()) {
       return false;
     }
-    if (player == TicTacToeGame.Player.X) {
-      this.state = CellState.X;
-    } else if (player == TicTacToeGame.Player.O) {
-      this.state = CellState.O;
-    } else {
-      throw new IllegalArgumentException("Unknown player type: " + player);
+    if (player == TicTacToeGame.Player.X || player == TicTacToeGame.Player.O) {
+      playedBy = player;
+      return true;
     }
-    return true;
+    throw new IllegalArgumentException("Illegal player type: " + player);
+  }
+
+  /**
+   * Get the player of this cell.
+   * @return the player of this cell.
+   */
+  public TicTacToeGame.Player getPlayer() {
+    return playedBy;
+  }
+  
+  /**
+   * Two TicTacToeCells are equal if they were played by the same person.
+   * @param other the Object to compare this to.
+   * @return true if this equals other.
+   */
+  public boolean equals(Object other) {
+    if (!(other instanceof TicTacToeCell)) {
+      return false;
+    }
+    return this.playedBy == ((TicTacToeCell)other).playedBy;
+  }
+  
+  /**
+   * A cell's string representation is equal to the representation of its
+   *    player.
+   * @return the string representation of this cell's player
+   */
+  public String toString() {
+    return playedBy.toString();
   }
 }
