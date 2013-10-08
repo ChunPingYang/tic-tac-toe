@@ -30,6 +30,9 @@ public class TicTacToeBoard {
                                              "-----------\n" + 
                                              " 7 | 8 | 9 \n";
 
+  private static final String INVALID_MOVE = "Move %s is invalid.";
+  private static final String REPEATED_MOVE = "Move %s has already been made.";
+  
   /* Conversion from 1-9 representation to two dimensional array indices */
   private static final int[] ROW = {0, 0, 0, 1, 1, 1, 2, 2, 2};
   private static final int[] COL = {0, 1, 2, 0, 1, 2, 0, 1, 2};
@@ -65,17 +68,22 @@ public class TicTacToeBoard {
   }
   
   /**
-   * Play a move, it it is legal.
-   * @return true if the move was successfully played.
+   * Play a move.
+   * @param move the move to play.
+   * @param player the player playing the move.
+   * @throws IllegalArgumentException if the move must is invalid (must follow
+   *     1 <= move <= 9) or the move has already been played.
    */
-  public boolean playMove(int move, TicTacToeGame.Player player) {
-    // subtract 1 for 0-indexing
-    if (board[ROW[move - 1]][COL[move - 1]].play(player)) {
-      // Move must be an Integer so it knows to remove by value, not index.
-      possibleMoves.remove(new Integer(move));
-      return true;
+  public void playMove(int move, TicTacToeGame.Player player) {
+    if (move < MIN_MOVE || move > MAX_MOVE) {
+      throw new IllegalArgumentException(String.format(INVALID_MOVE, move));
+    } else if (!possibleMoves.contains(move)) {
+      throw new IllegalArgumentException(String.format(REPEAT_MOVE, move));
     }
-    return false; // The move was unsuccessful.
+    // subtract 1 for 0-indexing
+    board[ROW[move - 1]][COL[move - 1]].play(player);
+    // Move must be an Integer so it knows to remove by value, not index.
+    possibleMoves.remove(new Integer(move));
   }
 
   /**
