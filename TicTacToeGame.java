@@ -67,13 +67,22 @@ public class TicTacToeGame {
     String playerInput = scanner.nextLine();
     try {
       int move = Integer.parseInt(playerInput);
-      if (move >= TicTacToeBoard.MIN_MOVE && move <= TicTacToeBoard.MAX_MOVE) {
-        return move;
+      if (move < TicTacToeBoard.MIN_MOVE || move > TicTacToeBoard.MAX_MOVE) {
+        prompt(VALID_MOVE_PROMPT);
       } else {
-        throw new NumberFormatException();
+        int[] possibleMoves = board.getPossibleMoves();
+        for (int possibleMove: possibleMoves) {
+          if (move == possibleMove) {
+            return move;
+          }
+        }
+        // If the move was valid and was not returned, it was already made
+        say(REPEAT_MOVE);
+        prompt(MOVE_PROMPT);
       }
     } catch (NumberFormatException e) {
       prompt(VALID_MOVE_PROMPT);
+    } finally {
       return getValidMove();
     }
   }
@@ -95,20 +104,16 @@ public class TicTacToeGame {
    */
   private static boolean play(TicTacToeBoard board) {
     int move = getMove();
-    if (board.playMove(move, Player.X)) {
-      System.out.println();
-      System.out.println(board);
-      if (board.isDone()) {
-        return true;
-      }
-      playComputerMove(board);
-      System.out.println(COMPUTER_TURN);
-      System.out.println(board);
-      return board.isDone();
-    } else {
-      say(REPEAT_MOVE);
-      return play(board);
+    board.playMove(move, Player.X);
+    System.out.println();
+    System.out.println(board);
+    if (board.isDone()) {
+      return true;
     }
+    playComputerMove(board);
+    System.out.println(COMPUTER_TURN);
+    System.out.println(board);
+    return board.isDone();
   }
 
   /**
