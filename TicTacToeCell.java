@@ -14,7 +14,7 @@ public class TicTacToeCell{
 
   /**
    * Determine whether it is legal to play this cell.
-   * @return if this cell has already been played.
+   * @return false if this cell has already been played.
    */
   private boolean canPlay() {
     return playedBy == TicTacToeGame.Player.Nobody;
