@@ -14,57 +14,60 @@ public class TicTacToeCellTest {
   
   @Before
   public void setUp() {
-    this.testCell = new TicTacToeCell();
-    this.otherCell = new TicTacToeCell();
+    testCell = new TicTacToeCell();
+    otherCell = new TicTacToeCell();
   }
   
   @Test
   public void testPlayX() {
-    assertTrue(this.testCell.play(TicTacToeGame.Player.X));
+    assertTrue(testCell.play(TicTacToeGame.Player.X));
+    assertEquals(TicTacToeGame.Player.X, testCell.getPlayer());
   }
 
   @Test
   public void testPlayO() {
-    assertTrue(this.testCell.play(TicTacToeGame.Player.O));
+    assertTrue(testCell.play(TicTacToeGame.Player.O));
+    assertEquals(TicTacToeGame.Player.O, testCell.getPlayer());
   }
   
   @Test (expected = IllegalArgumentException.class)
   public void testPlayNobody() {
-    this.testCell.play(TicTacToeGame.Player.Nobody);
+    assertEquals(TicTacToeGame.Player.Nobody, testCell.getPlayer());
+    testCell.play(TicTacToeGame.Player.Nobody);
   }
   
   @Test
   public void testPlayAlreadyPlayed() {
-    this.testCell.play(TicTacToeGame.Player.O);
-    assertFalse(this.testCell.play(TicTacToeGame.Player.X));
+    testCell.play(TicTacToeGame.Player.O);
+    assertFalse(testCell.play(TicTacToeGame.Player.X));
   }
   
   @Test
   public void testEqualPlayed() {
-    this.testCell.play(TicTacToeGame.Player.X);
-    this.otherCell.play(TicTacToeGame.Player.X);
-    assertTrue(this.testCell.equals(this.otherCell));
-    assertTrue(this.otherCell.equals(this.testCell));
+    testCell.play(TicTacToeGame.Player.X);
+    otherCell.play(TicTacToeGame.Player.X);
+    assertTrue(testCell.equals(otherCell));
+    assertTrue(otherCell.equals(testCell));
   }
   
   @Test
   public void testEqualUnplayed() {
-    assertTrue(this.testCell.equals(this.otherCell));
-    assertTrue(this.otherCell.equals(this.testCell));
+    assertTrue(testCell.equals(otherCell));
+    assertTrue(otherCell.equals(testCell));
   }
   
   @Test
   public void testEqualUnequalPlayed() {
-    this.testCell.play(TicTacToeGame.Player.X);
-    this.otherCell.play(TicTacToeGame.Player.O);
-    assertFalse(this.testCell.equals(this.otherCell));
-    assertFalse(this.otherCell.equals(this.testCell));
+    testCell.play(TicTacToeGame.Player.X);
+    otherCell.play(TicTacToeGame.Player.O);
+    assertFalse(testCell.equals(otherCell));
+    assertFalse(otherCell.equals(testCell));
   }
   
   @Test
   public void testEqualUnequalOnePlayed() {
-    this.testCell.play(TicTacToeGame.Player.X);
-    assertFalse(this.testCell.equals(this.otherCell));
-    assertFalse(this.otherCell.equals(this.testCell));
+    testCell.play(TicTacToeGame.Player.X);
+    assertFalse(testCell.equals(otherCell));
+    assertFalse(otherCell.equals(testCell));
   }  
 }
