@@ -5,8 +5,9 @@ import org.junit.Test;
 
 /**
  * Unit tests for TicTacToeBoard.
- * The methods to test are isDone, whoWon, and toString.
- * Helper methods are covered by testing these methods.
+ * The methods to test are isDone, whoWon, getPossibleMoves, and toString.
+ * Helper methods (including play, winnerOfRow, etc) are covered by testing
+ *     these methods.
  */
 public class TicTacToeBoardTest {
 
@@ -22,10 +23,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.X, 1, 2, 3);
     int[] possibleMoves = {4, 5, 6, 7, 8, 9};
     String boardString = " X | X | X \n" +
-            "-----------\n" +
-            "   |   |   \n" +
-            "-----------\n" +
-            "   |   |   \n";
+                         "-----------\n" +
+                         "   |   |   \n" +
+                         "-----------\n" +
+                         "   |   |   \n";
     
     assertTrue(playedBoard.isDone());
     assertEquals(TicTacToeGame.Player.X, playedBoard.whoWon());
@@ -38,10 +39,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 2, 5, 8);
     int[] possibleMoves = {1, 3, 4, 6, 7, 9};
     String boardString = "   | O |   \n" +
-            "-----------\n" +
-            "   | O |   \n" +
-            "-----------\n" +
-            "   | O |   \n";
+                         "-----------\n" +
+                         "   | O |   \n" +
+                         "-----------\n" +
+                         "   | O |   \n";
 
     assertTrue(playedBoard.isDone());
     assertEquals(TicTacToeGame.Player.O, playedBoard.whoWon());
@@ -54,10 +55,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 1, 5, 9);
     int[] possibleMoves = {2, 3, 4, 6, 7, 8};
     String boardString = " O |   |   \n" +
-            "-----------\n" +
-            "   | O |   \n" +
-            "-----------\n" +
-            "   |   | O \n";
+                         "-----------\n" +
+                         "   | O |   \n" +
+                         "-----------\n" +
+                         "   |   | O \n";
 
     assertTrue(playedBoard.isDone());
     assertEquals(TicTacToeGame.Player.O, playedBoard.whoWon());
@@ -70,10 +71,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.X, 3, 5, 7);
     int[] possibleMoves = {1, 2, 4, 6, 8, 9};
     String boardString = "   |   | X \n" +
-            "-----------\n" +
-            "   | X |   \n" +
-            "-----------\n" +
-            " X |   |   \n";
+                         "-----------\n" +
+                         "   | X |   \n" +
+                         "-----------\n" +
+                         " X |   |   \n";
 
     assertTrue(playedBoard.isDone());
     assertEquals(TicTacToeGame.Player.X, playedBoard.whoWon());
@@ -87,10 +88,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 2, 5, 6, 7);
     int[] possibleMoves = {};
     String boardString = " X | O | X \n" +
-            "-----------\n" +
-            " X | O | O \n" +
-            "-----------\n" +
-            " O | X | X \n";
+                         "-----------\n" +
+                         " X | O | O \n" +
+                         "-----------\n" +
+                         " O | X | X \n";
 
     assertTrue(playedBoard.isDone());
     assertEquals(TicTacToeGame.Player.Nobody, playedBoard.whoWon());
@@ -119,10 +120,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 2, 4);
     int[] possibleMoves = {5, 6, 7, 8};
     String boardString = " X | O | X \n" +
-            "-----------\n" +
-            " O |   |   \n" +
-            "-----------\n" +
-            "   |   | X \n";
+                         "-----------\n" +
+                         " O |   |   \n" +
+                         "-----------\n" +
+                         "   |   | X \n";
 
     assertFalse(playedBoard.isDone());
     assertEquals(TicTacToeGame.Player.Nobody, playedBoard.whoWon());
