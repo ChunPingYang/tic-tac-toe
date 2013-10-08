@@ -78,6 +78,9 @@ public class TicTacToeGame {
     }
   }
 
+  /**
+   * Have the computer play a randomly chosen valid move.
+   */
   private static void playComputerMove(TicTacToeBoard board) {
     int[] possibleMoves = board.getPossibleMoves();
     int move = possibleMoves[(int)(Math.random() * (possibleMoves.length - 1))];
