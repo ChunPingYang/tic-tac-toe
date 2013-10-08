@@ -52,20 +52,6 @@ public class TicTacToeBoard {
       possibleMoves.add(i);
     }
   }
-
-  /**
-   * Initialize the board to an existing configuration. Used only for testing.
-   * @param board the initial board configuration.
-   * @param numMovesPlayed the number of moves that have been played to produce
-   *     the initial configuration. Should be correct.
-   */
-  TicTacToeBoard(TicTacToeCell[][] board) {
-    this.board = board;
-    possibleMoves = new ArrayList<Integer>();
-    for (int i = 1; i <= 9; i++) {
-      possibleMoves.add(i);
-    }
-  }
   
   /**
    * Return a string representation of the board, like in the comments above.
