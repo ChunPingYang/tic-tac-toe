@@ -96,9 +96,6 @@ public class TicTacToeBoard {
    * @return the winner of the game.
    */
   public TicTacToeGame.Player whoWon() {
-    if (possibleMoves.size() == 0) {
-      return TicTacToeGame.Player.Nobody;
-    }
     TicTacToeGame.Player winner = winnerOfDownDiagonal();
     if (winner != TicTacToeGame.Player.Nobody) {
       return winner;
