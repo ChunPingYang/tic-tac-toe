@@ -60,7 +60,7 @@ public class TicTacToeCell{
   /**
    * A cell's string representation is equal to the representation of its
    *    player.
-   * @return the string representation of this cell's player
+   * @return the string representation of this cell's player.
    */
   public String toString() {
     return playedBy.toString();
