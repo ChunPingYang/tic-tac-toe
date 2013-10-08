@@ -3,6 +3,7 @@
  */
 public class TicTacToeCell{
 
+  private static final String ILLEGAL_PLAYER = "Illegal player: ";
   private TicTacToeGame.Player playedBy;
 
   /**
@@ -34,7 +35,7 @@ public class TicTacToeCell{
       playedBy = player;
       return true;
     }
-    throw new IllegalArgumentException("Illegal player type: " + player);
+    throw new IllegalArgumentException(ILLEGAL_PLAYER + player);
   }
 
   /**
