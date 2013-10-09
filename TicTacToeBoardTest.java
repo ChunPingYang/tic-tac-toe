@@ -23,11 +23,11 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.X, 1, 2, 3);
     int[] possibleMoves = {4, 5, 6, 7, 8, 9};
     String boardString = " X | X | X \n" +
-                         "-----------\n" +
-                         "   |   |   \n" +
-                         "-----------\n" +
-                         "   |   |   \n";
-    
+            "-----------\n" +
+            "   |   |   \n" +
+            "-----------\n" +
+            "   |   |   \n";
+
     assertCorrect(true, TicTacToeGame.Player.X, possibleMoves, boardString);
   }
 
@@ -36,10 +36,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 2, 5, 8);
     int[] possibleMoves = {1, 3, 4, 6, 7, 9};
     String boardString = "   | O |   \n" +
-                         "-----------\n" +
-                         "   | O |   \n" +
-                         "-----------\n" +
-                         "   | O |   \n";
+            "-----------\n" +
+            "   | O |   \n" +
+            "-----------\n" +
+            "   | O |   \n";
 
     assertCorrect(true, TicTacToeGame.Player.O, possibleMoves, boardString);
   }
@@ -49,10 +49,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 1, 5, 9);
     int[] possibleMoves = {2, 3, 4, 6, 7, 8};
     String boardString = " O |   |   \n" +
-                         "-----------\n" +
-                         "   | O |   \n" +
-                         "-----------\n" +
-                         "   |   | O \n";
+            "-----------\n" +
+            "   | O |   \n" +
+            "-----------\n" +
+            "   |   | O \n";
 
     assertCorrect(true, TicTacToeGame.Player.O, possibleMoves, boardString);
   }
@@ -62,10 +62,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.X, 3, 5, 7);
     int[] possibleMoves = {1, 2, 4, 6, 8, 9};
     String boardString = "   |   | X \n" +
-                         "-----------\n" +
-                         "   | X |   \n" +
-                         "-----------\n" +
-                         " X |   |   \n";
+            "-----------\n" +
+            "   | X |   \n" +
+            "-----------\n" +
+            " X |   |   \n";
 
     assertCorrect(true, TicTacToeGame.Player.X, possibleMoves, boardString);
   }
@@ -76,10 +76,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 2, 5, 6, 7);
     int[] possibleMoves = {};
     String boardString = " X | O | X \n" +
-                         "-----------\n" +
-                         " X | O | O \n" +
-                         "-----------\n" +
-                         " O | X | X \n";
+            "-----------\n" +
+            " X | O | O \n" +
+            "-----------\n" +
+            " O | X | X \n";
 
     assertCorrect(true, TicTacToeGame.Player.Nobody, possibleMoves, boardString);
   }
@@ -102,10 +102,10 @@ public class TicTacToeBoardTest {
     play(TicTacToeGame.Player.O, 2, 4);
     int[] possibleMoves = {5, 6, 7, 8};
     String boardString = " X | O | X \n" +
-                         "-----------\n" +
-                         " O |   |   \n" +
-                         "-----------\n" +
-                         "   |   | X \n";
+            "-----------\n" +
+            " O |   |   \n" +
+            "-----------\n" +
+            "   |   | X \n";
 
     assertCorrect(false, TicTacToeGame.Player.Nobody, possibleMoves, boardString);
   }
@@ -126,10 +126,10 @@ public class TicTacToeBoardTest {
    *     methods are behaving as expected.
    */
   private void assertCorrect(boolean done, TicTacToeGame.Player winner,
-         int[] movesLeft, String stringRep) {
+          int[] movesLeft, String stringRep) {
     assertEquals(done, playedBoard.isDone());
     assertEquals(winner, playedBoard.whoWon());
     assertArrayEquals(movesLeft, playedBoard.getPossibleMoves());
-    assertEquals(stringRep), playedBoard.toString());
+    assertEquals(stringRep, playedBoard.toString());
   }
 }

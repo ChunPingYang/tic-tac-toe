@@ -20,19 +20,19 @@ public class TicTacToeBoard {
   public static final int MIN_MOVE = 1;
   public static final int MAX_MOVE = 9;
   private static final String BOARD_TEMPLATE = " %s | %s | %s \n" + 
-                                               "-----------\n" + 
-                                               " %s | %s | %s \n" +
-                                               "-----------\n" + 
-                                               " %s | %s | %s \n";
+          "-----------\n" + 
+          " %s | %s | %s \n" +
+          "-----------\n" + 
+          " %s | %s | %s \n";
   public static final String LABELED_BOARD = " 1 | 2 | 3 \n" + 
-                                             "-----------\n" + 
-                                             " 4 | 5 | 6 \n" +
-                                             "-----------\n" + 
-                                             " 7 | 8 | 9 \n";
+          "-----------\n" + 
+          " 4 | 5 | 6 \n" +
+          "-----------\n" + 
+          " 7 | 8 | 9 \n";
 
   private static final String INVALID_MOVE = "Move %s is invalid.";
-  private static final String REPEATED_MOVE = "Move %s has already been made.";
-  
+  private static final String REPEAT_MOVE = "Move %s has already been made.";
+
   /* Conversion from 1-9 representation to two dimensional array indices */
   private static final int[] ROW = {0, 0, 0, 1, 1, 1, 2, 2, 2};
   private static final int[] COL = {0, 1, 2, 0, 1, 2, 0, 1, 2};
@@ -55,7 +55,7 @@ public class TicTacToeBoard {
       possibleMoves.add(i);
     }
   }
-  
+
   /**
    * Return a string representation of the board, like in the comments above.
    * @return a string visualizing the baord.
@@ -66,7 +66,7 @@ public class TicTacToeBoard {
             board[2][1], board[2][2]);
     return boardString;
   }
-  
+
   /**
    * Play a move.
    * @param move the move to play.
@@ -93,7 +93,7 @@ public class TicTacToeBoard {
   public boolean isDone() {
     TicTacToeGame.Player winner = whoWon();
     if (possibleMoves.size() == 0 || winner == TicTacToeGame.Player.X ||
-       winner == TicTacToeGame.Player.O) {
+            winner == TicTacToeGame.Player.O) {
       return true;
     }
     return false;
@@ -137,7 +137,7 @@ public class TicTacToeBoard {
     }
     return possibleMovesArray;
   }
-  
+
   /**
    * Return the winner of the specified row, if there is one.
    * @param row the row to get the winner of. 0 <= row < 3.

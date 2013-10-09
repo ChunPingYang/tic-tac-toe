@@ -8,16 +8,16 @@ import org.junit.Test;
  * The methods to test are play, getPlayer, and equals.
  */
 public class TicTacToeCellTest {
-  
+
   private TicTacToeCell testCell;
   private TicTacToeCell otherCell;
-  
+
   @Before
   public void setUp() {
     testCell = new TicTacToeCell();
     otherCell = new TicTacToeCell();
   }
-  
+
   @Test
   public void testPlayX() {
     assertTrue(testCell.play(TicTacToeGame.Player.X));
@@ -29,19 +29,19 @@ public class TicTacToeCellTest {
     assertTrue(testCell.play(TicTacToeGame.Player.O));
     assertEquals(TicTacToeGame.Player.O, testCell.getPlayer());
   }
-  
+
   @Test (expected = IllegalArgumentException.class)
   public void testPlayNobody() {
     assertEquals(TicTacToeGame.Player.Nobody, testCell.getPlayer());
     testCell.play(TicTacToeGame.Player.Nobody);
   }
-  
+
   @Test
   public void testPlayAlreadyPlayed() {
     testCell.play(TicTacToeGame.Player.O);
     assertFalse(testCell.play(TicTacToeGame.Player.X));
   }
-  
+
   @Test
   public void testEqualPlayed() {
     testCell.play(TicTacToeGame.Player.X);
@@ -49,13 +49,13 @@ public class TicTacToeCellTest {
     assertTrue(testCell.equals(otherCell));
     assertTrue(otherCell.equals(testCell));
   }
-  
+
   @Test
   public void testEqualUnplayed() {
     assertTrue(testCell.equals(otherCell));
     assertTrue(otherCell.equals(testCell));
   }
-  
+
   @Test
   public void testEqualUnequalPlayed() {
     testCell.play(TicTacToeGame.Player.X);
@@ -63,7 +63,7 @@ public class TicTacToeCellTest {
     assertFalse(testCell.equals(otherCell));
     assertFalse(otherCell.equals(testCell));
   }
-  
+
   @Test
   public void testEqualUnequalOnePlayed() {
     testCell.play(TicTacToeGame.Player.X);

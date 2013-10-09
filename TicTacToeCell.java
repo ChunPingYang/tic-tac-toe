@@ -45,7 +45,7 @@ public class TicTacToeCell{
   public TicTacToeGame.Player getPlayer() {
     return playedBy;
   }
-  
+
   /**
    * Two TicTacToeCells are equal if they were played by the same person.
    * @param other the Object to compare this to.
@@ -57,7 +57,7 @@ public class TicTacToeCell{
     }
     return this.playedBy == ((TicTacToeCell)other).playedBy;
   }
-  
+
   /**
    * A cell's string representation is equal to the representation of its
    *    player.
